@@ -13,7 +13,7 @@ spec:
   {{- if $tls.enabled }}
   tls:
   - hosts:
-    - {{ $ingress.hosts }}
+    - {{ $ingress.host }}
     {{- if $tls.secretName }}
     secretName: {{ $tls.secretName }}
     {{- else }}
@@ -21,7 +21,7 @@ spec:
     {{- end }}
   {{- end }}
   rules:
-  - host: {{ $ingress.hosts }}
+  - host: {{ $ingress.host }}
     http:
       paths:
       - path: /

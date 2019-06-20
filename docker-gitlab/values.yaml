@@ -13,7 +13,7 @@ expose:
     secretName: ""
     certExpiry: 3560
   ingress:
-    hosts: gitlab.cluster.local
+    host: gitlab.cluster.local
     annotations:
       ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
