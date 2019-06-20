@@ -1,0 +1,25 @@
+apiVersion: v1
+entries:
+  docker-gitlab:
+  - appVersion: 11.10.4
+    created: "2019-06-20T08:19:32.678697216Z"
+    description: GitLab CE is set up in the Docker image using the install from source
+      method as documented in the the official GitLab documentation.
+    digest: b740e95344fc6145ab5b0f884b75bba1d886e987961a978fb1bedd7ed57a5f6a
+    home: https://about.gitlab.com
+    icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+    keywords:
+    - gitlab
+    maintainers:
+    - email: ziling.zhong@hand-china.com
+      name: Choerodon Inc.
+    name: docker-gitlab
+    sources:
+    - http://www.damagehead.com/docker-gitlab/
+    - https://github.com/sameersbn/docker-gitlab/
+    - https://hub.docker.com/r/gitlab/gitlab-ce/
+    - https://docs.gitlab.com/omnibus/
+    urls:
+    - https://timebye.github.io/charts/docker-gitlab-0.1.0.tgz
+    version: 0.1.0
+generated: "2019-06-20T08:19:32.677993803Z"
