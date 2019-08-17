@@ -30,9 +30,26 @@ spec:
       - name: database
         image: "{{ .Values.database.internal.image.repository }}:{{ .Values.database.internal.image.tag }}"
         imagePullPolicy: {{ .Values.imagePullPolicy }}
-        args:
-        - --character-set-server=utf8mb4
-        - --collation-server=utf8mb4_general_ci
+        env:
+        - name: MYSQL_CHARSET
+          value: utf8mb4
+        - name: MYSQL_COLLATION
+          value: utf8mb4_general_ci
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "gitlab.database" . }}
+              key: DB_USER
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "gitlab.database" . }}
+              key: DB_PASS
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "gitlab.database" . }}
+              key: DB_NAME
         ports:
         - name: mysql
           containerPort: 3306
@@ -41,7 +58,7 @@ spec:
             command:
             - sh
             - -c
-            - "mysqladmin ping -u root -p${MYSQL_ROOT_PASSWORD}"
+            - "mysqladmin ping -u${DB_USER} -p${DB_PASS}"
           initialDelaySeconds: 60
           timeoutSeconds: 5
         readinessProbe:
@@ -49,32 +66,11 @@ spec:
             command:
             - sh
             - -c
-            - "mysqladmin ping -u root -p${MYSQL_ROOT_PASSWORD}"
+            - "mysqladmin ping -u${DB_USER} -p${DB_PASS}"
           initialDelaySeconds: 5
           timeoutSeconds: 1
         resources:
 {{ toYaml .Values.database.internal.resources | indent 10 }}
-        env:
-        - name: MYSQL_USER
-          valueFrom:
-            secretKeyRef:
-              name: {{ include "gitlab.database" . }}
-              key: DB_USER
-        - name: MYSQL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ include "gitlab.database" . }}
-              key: DB_PASS
-        - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ include "gitlab.database" . }}
-              key: DB_PASS
-        - name: MYSQL_DATABASE
-          valueFrom:
-            secretKeyRef:
-              name: {{ include "gitlab.database" . }}
-              key: DB_NAME
         volumeMounts:
         - name: "database-data"
           mountPath: /var/lib/mysql
@@ -102,7 +98,7 @@ spec:
 {{ toYaml . | indent 8 }}
     {{- end }}
   {{- if and .Values.persistence.enabled (not $database.existingClaim) }}
-  volumeClaimincludes:
+  volumeClaimTemplates:
   - metadata:
       name: "database-data"
       labels:

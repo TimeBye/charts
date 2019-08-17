@@ -37,7 +37,7 @@ spec:
       {{- end }}
       {{- if eq .Values.expose.type "ingress" }}
         - name: GITLAB_HOST
-          value: {{ $ingress.hosts }}
+          value: {{ $ingress.host }}
         {{- if .Values.expose.tls.enabled }}
         - name: GITLAB_HTTPS
           value: "true"
@@ -74,15 +74,9 @@ spec:
           value: {{ .Values.core.env.GITLAB_TIMEZONE | quote }}
         - name: GITLAB_BACKUP_SCHEDULE
           value: disable
-        - name: GITLAB_POST_RECONFIGURE_CODE
-          value: |
-            include Gitlab::CurrentSettings
-            Gitlab::CurrentSettings.current_application_settings.update_attribute(:health_check_access_token, '{{.Values.core.healthCheckToken}}')
-        - name: GITLAB_POST_RECONFIGURE_SCRIPT
-          value: /home/git/gitlab/bin/rails runner -e production "$GITLAB_POST_RECONFIGURE_CODE"
         livenessProbe:
           httpGet:
-            path: /-/liveness?token={{.Values.core.healthCheckToken}}
+            path: /help
             scheme: HTTP
             port: 80
           initialDelaySeconds: 600
@@ -90,7 +84,7 @@ spec:
           timeoutSeconds: 5
         readinessProbe:
           httpGet:
-            path: /-/readiness?token={{.Values.core.healthCheckToken}}
+            path: /help
             scheme: HTTP
             port: 80
           initialDelaySeconds: 5

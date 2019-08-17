@@ -141,16 +141,6 @@ app: "{{ include "gitlab.name" . }}"
   {{- include "gitlab.database.rawDatabaseName" . | b64enc | quote -}}
 {{- end -}}
 
-{{- define "gitlab.database.extension" -}}
-  {{- if eq .Values.database.type "internal" -}}
-    {{- printf "%s" "pg_trgm" -}}
-  {{- end -}}
-{{- end -}}
-
-{{- define "gitlab.database.encryptedExtension" -}}
-  {{- include "gitlab.database.extension" . | b64enc | quote -}}
-{{- end -}}
-
 {{- define "gitlab.redis.host" -}}
   {{- if eq .Values.redis.type "internal" -}}
     {{- include "gitlab.redis" . -}}

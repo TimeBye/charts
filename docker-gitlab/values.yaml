@@ -93,9 +93,8 @@ imagePullPolicy: IfNotPresent
 core:
   image:
     repository: quay.azk8s.cn/setzero/docker-gitlab
-    tag: v11.10.4
+    tag: v12.0.4
   replicas: 1
-  healthCheckToken: SXBAQichEJasbtDSygrD
   ## Additional deployment annotations
   podAnnotations: {}
   # resources:
@@ -117,15 +116,16 @@ core:
 
     # GITLAB_ROOT_PASSWORD: "changeit"
     # GITLAB_ROOT_EMAIL: 
+
     GITLAB_NOTIFY_ON_BROKEN_BUILDS: true
     GITLAB_NOTIFY_PUSHER: false
 
     GITLAB_EMAIL: notifications@example.com
     GITLAB_EMAIL_REPLY_TO: noreply@example.com
     GITLAB_INCOMING_EMAIL_ADDRESS: reply@example.com
-
-    GITLAB_BACKUP_SCHEDULE: disable
-    GITLAB_BACKUP_TIME: 04:00
+    
+    GITLAB_BACKUP_SCHEDULE: daily
+    GITLAB_BACKUP_TIME: 01:00
 
     SMTP_ENABLED: false
     SMTP_DOMAIN: www.example.com
@@ -182,9 +182,9 @@ database:
     # You can configure this image to use either MySQL(mysql2) or PostgreSQL(postgresql).
     image:
       repository: dockerhub.azk8s.cn/sameersbn/postgresql
-      tag: 10
-      # repository: dockerhub.azk8s.cn/library/mysql
-      # tag: 5.7.26
+      tag: 10-2
+      # repository: dockerhub.azk8s.cn/sameersbn/mysql
+      # tag: 5.7.26-0
     # If image is MySQL, set "adapter" to "mysql2".
     adapter: "postgresql" 
     # The initial superuser password for internal database
@@ -215,7 +215,7 @@ redis:
   internal:
     image:
       repository: dockerhub.azk8s.cn/sameersbn/redis
-      tag: 4.0.9-1
+      tag: 4.0.9-2
     ## Additional deployment annotations
     podAnnotations: {}
     # resources:

@@ -5,8 +5,6 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: "{{ include "gitlab.core" . }}-backup-scheduled"
-  annotations:
-    "helm.sh/hook": post-install
   labels:
 {{ include "gitlab.labels" . | indent 4 }}
     component: gitlab-backup-scheduled
@@ -39,7 +37,7 @@ spec:
           {{- end }}
           {{- if eq .Values.expose.type "ingress" }}
             - name: GITLAB_HOST
-              value: {{ $ingress.hosts }}
+              value: {{ $ingress.host }}
             {{- if .Values.expose.tls.enabled }}
             - name: GITLAB_HTTPS
               value: "true"
@@ -76,12 +74,6 @@ spec:
               value: {{ .Values.core.env.GITLAB_TIMEZONE | quote }}
             - name: GITLAB_BACKUP_SCHEDULE
               value: disable
-            - name: GITLAB_POST_RECONFIGURE_CODE
-              value: |
-                include Gitlab::CurrentSettings
-                Gitlab::CurrentSettings.current_application_settings.update_attribute(:health_check_access_token, '{{.Values.core.healthCheckToken}}')
-            - name: GITLAB_POST_RECONFIGURE_SCRIPT
-              value: /home/git/gitlab/bin/rails runner -e production "$GITLAB_POST_RECONFIGURE_CODE"
             volumeMounts:
             - name: data
               mountPath: /home/git/data

@@ -2,14 +2,7 @@
 
 ## Introduction
 
-This [Gitlab](https://about.gitlab.com/) chart installs [Gitlab](https://about.gitlab.com/) in a Kubernetes cluster.
-
-## Contributing
-If you find this chart useful here's how you can help:
-
-- Send a Pull Request with your awesome new features and bug fixes
-- Be a part of the community and help resolve [Issues](https://github.com/sameersbn/docker-gitlab/issues)
-- Support the development of this image with a [donation](http://www.damagehead.com/donate/)
+This [Gitlab](https://about.gitlab.com/) chart installs [sameersbn/gitlab](https://github.com/sameersbn/docker-gitlab) in a Kubernetes cluster.
 
 ## Prerequisites
 
@@ -18,19 +11,12 @@ If you find this chart useful here's how you can help:
 
 ## Installation
 
-### Download the chart
+### Add chart repository
 
-Download Gitlab helm chart code.
-
-```bash
-git clone https://github.com/sameersbn/docker-gitlab.git
-```
-
-Checkout the tag.
+Add Gitlab chart repository.
 
 ```bash
-cd docker-gitlab/kubernetes/chart
-git checkout tag_name
+helm repo add setzero https://timebye.github.io/charts/
 ```
 
 ### Configure the chart
@@ -44,8 +30,6 @@ The following items can be configured in `values.yaml` or set via `--set` flag d
 - **NodePort**: Exposes the service on each Node’s IP at a static port (the NodePort). You’ll be able to contact the NodePort service, from outside the cluster, by requesting `NodeIP:NodePort`. 
 - **LoadBalancer**: Exposes the service externally using a cloud provider’s load balancer.  
 
-If expose type not `ingress`, the `core.env.GITLAB_HOST` must be set.
-
 #### Configure the way how to persistent data:
 
 - **Disable**: The data does not survive the termination of a pod.
@@ -55,18 +39,29 @@ If expose type not `ingress`, the `core.env.GITLAB_HOST` must be set.
 
 ### Install the chart
 
-Install the Gitlab helm chart with a release name `my-release`:
+Install the Gitlab helm chart with a release name `my-gitlab`:
 
 ```bash
-helm install --name my-release .
+# helm v2
+helm setzero/docker-gitlab \
+  --name my-gitlab \
+  --set expose.ingress.host=gitlab.cluster.local
+
+# helm v3
+helm install my-gitlab setzero/docker-gitlab \
+  --set expose.ingress.host=gitlab.cluster.local
 ```
 
 ## Uninstallation
 
-To uninstall/delete the `my-release` deployment:
+To uninstall/delete the `my-gitlab` deployment:
 
 ```bash
-helm delete --purge my-release
+# helm v2
+helm delete --purge my-gitlab
+
+# helm v3
+helm uninstall my-gitlab
 ```
 
 ## Configuration
@@ -76,9 +71,10 @@ The following table lists the configurable parameters of the Gitlab chart and th
 | Parameter                                                  | Description                                                                                                                                                                                                                                                                   | Default                                   |
 | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
 | **Expose**                                                 |                                                                                                                                                                                                                                                                               |                                           |
-| `expose.type`                                              | The way how to expose the service: `ingress` or `nodePort`                                                                                                                                                                                                                    | `ingress`                                 |
+| `expose.type`                                              | The way how to expose the service: `ingress`、`clusterIP`、`loadBalancer` or `nodePort`                                                                                                                                                                                       | `ingress`                                 |
 | `expose.tls.enabled`                                       | Enable the tls or not                                                                                                                                                                                                                                                         | `false`                                   |
 | `expose.tls.secretName`                                    | Fill the name of secret if you want to use your own TLS certificate. The secret must contain keys named:`tls.crt` - the certificate, `tls.key` - the private key, `ca.crt` - the certificate of CA.These files will be generated automatically if the `secretName` is not set |                                           |
+| `expose.tls.certExpiry`                                    | Automatically generated self-signed certificate validity period(day)                                                                                                                                                                                                          | `3650`                                    |
 | `expose.ingress.host`                                      | The host of Gitlab service in ingress rule                                                                                                                                                                                                                                    | `gitlab.cluster.local`                    |
 | `expose.ingress.annotations`                               | The annotations used in ingress                                                                                                                                                                                                                                               |                                           |
 | `expose.clusterIP.name`                                    | The name of ClusterIP service                                                                                                                                                                                                                                                 | `Release.Name-gitlab-core`                |
@@ -125,9 +121,9 @@ The following table lists the configurable parameters of the Gitlab chart and th
 | `core.env`                                                 | The [available options] that can be used to customize your gitlab installation.                                                                                                                                                                                               | `{}`                                      |
 | **Database**                                               |                                                                                                                                                                                                                                                                               |                                           |
 | `database.type`                                            | If external database is used, set it to `external`                                                                                                                                                                                                                            | `internal`                                |
-| `database.internal.adapter`                                | The adapter for database                                                                                                                                                                                                                                                      | `postgresql`                              |
+| `database.internal.adapter`                                | The adapter for internal database                                                                                                                                                                                                                                             | `postgresql`                              |
 | `database.internal.image.repository`                       | Repository for database image                                                                                                                                                                                                                                                 | `dockerhub.azk8s.cn/sameersbn/postgresql` |
-| `database.internal.image.tag`                              | Tag for database image                                                                                                                                                                                                                                                        | `10`                                      |
+| `database.internal.image.tag`                              | Tag for database image                                                                                                                                                                                                                                                        | `10-2`                                    |
 | `database.internal.password`                               | The password for database                                                                                                                                                                                                                                                     | `changeit`                                |
 | `database.internal.podAnnotations`                         | Annotations to add to the database pod                                                                                                                                                                                                                                        | `{}`                                      |
 | `database.internal.resources`                              | The [resources] to allocate for container                                                                                                                                                                                                                                     | undefined                                 |
@@ -143,7 +139,7 @@ The following table lists the configurable parameters of the Gitlab chart and th
 | **Redis**                                                  |                                                                                                                                                                                                                                                                               |                                           |
 | `redis.type`                                               | If external redis is used, set it to `external`                                                                                                                                                                                                                               | `internal`                                |
 | `redis.internal.image.repository`                          | Repository for redis image                                                                                                                                                                                                                                                    | `dockerhub.azk8s.cn/sameersbn/redis`      |
-| `redis.internal.image.tag`                                 | Tag for redis image                                                                                                                                                                                                                                                           | `4.0.9-1`                                 |
+| `redis.internal.image.tag`                                 | Tag for redis image                                                                                                                                                                                                                                                           | `4.0.9-2`                                 |
 | `redis.internal.podAnnotations`                            | Annotations to add to the redis pod                                                                                                                                                                                                                                           | `{}`                                      |
 | `redis.internal.resources`                                 | The [resources] to allocate for container                                                                                                                                                                                                                                     | undefined                                 |
 | `redis.internal.nodeSelector`                              | Node labels for pod assignment                                                                                                                                                                                                                                                | `{}`                                      |
