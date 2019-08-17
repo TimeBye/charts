@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-    - image: dtzar/helm-kubectl:2.14.1
+    - image: dtzar/helm-kubectl:2.14.3
     steps:
       - checkout
       - run : |
@@ -20,6 +20,7 @@ jobs:
           done
       - run : |
           mv *.tgz /charts
+          mv .circleci/config.yml /charts/.circleci/config.yml
           helm repo index /charts --url https://timebye.github.io/charts/
       - run : |
           cd /charts

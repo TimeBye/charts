@@ -1,18 +1,18 @@
 apiVersion: v1
 entries:
   docker-gitlab:
-  - appVersion: 11.10.4
-    created: "2019-08-17T12:16:09.544663086Z"
+  - appVersion: 12.0.4
+    created: "2019-08-17T14:52:06.193904187Z"
     description: GitLab CE is set up in the Docker image using the install from source
       method as documented in the the official GitLab documentation.
-    digest: 8389596ef68b83afd74b47aa9c278050747cad1d8bce41d03a6301f18d15fff4
+    digest: d66455e101c7027d7290f588c2f52b16b59dffc72ef69db827f9cce4f7375dab
     home: https://about.gitlab.com
     icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
     keywords:
     - gitlab
     maintainers:
-    - email: ziling.zhong@hand-china.com
-      name: Choerodon Inc.
+    - email: setzero@aliyun.com
+      name: TimeBye
     name: docker-gitlab
     sources:
     - http://www.damagehead.com/docker-gitlab/
@@ -24,10 +24,10 @@ entries:
     version: 0.1.0
   harbor:
   - appVersion: 1.8.2
-    created: "2019-08-17T12:16:09.54893852Z"
+    created: "2019-08-17T14:52:06.198682797Z"
     description: An open source trusted cloud native registry that stores, signs,
       and scans content
-    digest: c725ab3a94f6035968cbd7340c165fa8309b6474fc8309b6f629ff4d0ae280bc
+    digest: ab00535c268f39f3bc7d8baa5c2154d3860c33dab2e7a2e4bb2b00cd48d06220
     engine: gotpl
     home: https://goharbor.io
     icon: https://raw.githubusercontent.com/goharbor/harbor/master/docs/img/harbor_logo.png
@@ -48,7 +48,7 @@ entries:
     - https://timebye.github.io/charts/harbor-1.1.2.tgz
     version: 1.1.2
   - appVersion: 1.8.1
-    created: "2019-08-17T12:16:09.547422961Z"
+    created: "2019-08-17T14:52:06.196304221Z"
     description: An open source trusted cloud native registry that stores, signs,
       and scans content
     digest: 96b7433e9497f5ebe753d8508373c623b0ab0667d2610d33612250b90a6a701b
@@ -74,10 +74,10 @@ entries:
   prometheus-operator:
   - apiVersion: v1
     appVersion: 0.31.1
-    created: "2019-08-17T12:16:09.591291075Z"
+    created: "2019-08-17T14:52:06.241033224Z"
     description: Provides easy monitoring definitions for Kubernetes services, and
       deployment and management of Prometheus instances.
-    digest: 3d6b798d185a0e5526a8ae6fcd5c474cd0bff7a92343936f9f23b5bd99776954
+    digest: 1c4c30d78bba038263bebdf3a0e1e2e12833f789b040da348d6f43466afb3faa
     engine: gotpl
     home: https://github.com/coreos/prometheus-operator
     icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
@@ -98,7 +98,7 @@ entries:
     version: 6.7.1
   - apiVersion: v1
     appVersion: 0.30.1
-    created: "2019-08-17T12:16:09.558563038Z"
+    created: "2019-08-17T14:52:06.215675992Z"
     description: Provides easy monitoring definitions for Kubernetes services, and
       deployment and management of Prometheus instances.
     digest: cbde4c261e2a13db15afbb1d946764ee0a5ba0605a5fc101695b46f2eb66fa9b
@@ -120,4 +120,4 @@ entries:
     urls:
     - https://timebye.github.io/charts/prometheus-operator-5.12.4.tgz
     version: 5.12.4
-generated: "2019-08-17T12:16:09.543493545Z"
+generated: "2019-08-17T14:52:06.189191914Z"
