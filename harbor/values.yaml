@@ -20,7 +20,7 @@ expose:
     # described above. Fill the name of secret if you want to use a 
     # separated one. Only needed when the type is "ingress".
     notarySecretName: ""
-    # The commmon name used to generate the certificate, it's necessary
+    # The common name used to generate the certificate, it's necessary
     # when the type isn't "ingress" and "secretName" is null
     commonName: ""
   ingress:
@@ -30,6 +30,7 @@ expose:
     # set to the type of ingress controller if it has specific requirements.
     # leave as `default` for most ingress controllers.
     # set to `gce` if using the GCE ingress controller
+    # set to `ncp` if using the NCP (NSX-T Container Plugin) ingress controller
     controller: default
     annotations:
       ingress.kubernetes.io/ssl-redirect: "true"
@@ -70,6 +71,8 @@ expose:
   loadBalancer:
     # The name of LoadBalancer service
     name: harbor
+    # Set the IP if the LoadBalancer supports assigning IP
+    IP: ""
     ports:
       # The service port Harbor listens on when serving with HTTP
       httpPort: 80
@@ -233,8 +236,8 @@ secretKey: "not-a-secure-key"
 # If expose the service via "ingress", the Nginx will not be used
 nginx:
   image:
-    repository: goharbor/nginx-photon
-    tag: v1.8.1
+    repository: dockerhub.azk8s.cn/goharbor/nginx-photon
+    tag: v1.8.2
   replicas: 1
   # resources:
   #  requests:
@@ -248,8 +251,8 @@ nginx:
 
 portal:
   image:
-    repository: goharbor/harbor-portal
-    tag: v1.8.1
+    repository: dockerhub.azk8s.cn/goharbor/harbor-portal
+    tag: v1.8.2
   replicas: 1
 # resources:
 #  requests:
@@ -263,8 +266,8 @@ portal:
 
 core:
   image:
-    repository: goharbor/harbor-core
-    tag: v1.8.1
+    repository: dockerhub.azk8s.cn/goharbor/harbor-core
+    tag: v1.8.2
   replicas: 1
 # resources:
 #  requests:
@@ -289,8 +292,8 @@ core:
 
 jobservice:
   image:
-    repository: goharbor/harbor-jobservice
-    tag: v1.8.1
+    repository: dockerhub.azk8s.cn/goharbor/harbor-jobservice
+    tag: v1.8.2
   replicas: 1
   maxJobWorkers: 10
   # The logger for jobs: "file", "database" or "stdout"
@@ -312,16 +315,16 @@ jobservice:
 registry:
   registry:
     image:
-      repository: goharbor/registry-photon
-      tag: v2.7.1-patch-2819-v1.8.1
+      repository: dockerhub.azk8s.cn/goharbor/registry-photon
+      tag: v2.7.1-patch-2819-v1.8.2
     # resources:
     #  requests:
     #    memory: 256Mi
     #    cpu: 100m
   controller:
     image:
-      repository: goharbor/harbor-registryctl
-      tag: v1.8.1
+      repository: dockerhub.azk8s.cn/goharbor/harbor-registryctl
+      tag: v1.8.2
     # resources:
     #  requests:
     #    memory: 256Mi
@@ -342,8 +345,8 @@ registry:
 chartmuseum:
   enabled: true
   image:
-    repository: goharbor/chartmuseum-photon
-    tag: v0.8.1-v1.8.1
+    repository: dockerhub.azk8s.cn/goharbor/chartmuseum-photon
+    tag: v0.9.0-v1.8.2
   replicas: 1
   # resources:
   #  requests:
@@ -358,8 +361,8 @@ chartmuseum:
 clair:
   enabled: true
   image:
-    repository: goharbor/clair-photon
-    tag: v2.0.8-v1.8.1
+    repository: dockerhub.azk8s.cn/goharbor/clair-photon
+    tag: v2.0.8-v1.8.2
   replicas: 1
   # The http(s) proxy used to update vulnerabilities database from internet
   httpProxy:
@@ -381,8 +384,8 @@ notary:
   enabled: true
   server:
     image:
-      repository: goharbor/notary-server-photon
-      tag: v0.6.1-v1.8.1
+      repository: dockerhub.azk8s.cn/goharbor/notary-server-photon
+      tag: v0.6.1-v1.8.2
     replicas: 1
     # resources:
     #  requests:
@@ -390,8 +393,8 @@ notary:
     #    cpu: 100m
   signer:
     image:
-      repository: goharbor/notary-signer-photon
-      tag: v0.6.1-v1.8.1
+      repository: dockerhub.azk8s.cn/goharbor/notary-signer-photon
+      tag: v0.6.1-v1.8.2
     replicas: 1
     # resources:
     #  requests:
@@ -416,8 +419,8 @@ database:
   type: internal
   internal:
     image:
-      repository: goharbor/harbor-db
-      tag: v1.8.1
+      repository: dockerhub.azk8s.cn/goharbor/harbor-db
+      tag: v1.8.2
     # The initial superuser password for internal database
     password: "changeit"
     # resources:
@@ -446,8 +449,8 @@ redis:
   type: internal
   internal:
     image:
-      repository: goharbor/redis-photon
-      tag: v1.8.1
+      repository: dockerhub.azk8s.cn/goharbor/redis-photon
+      tag: v1.8.2
     # resources:
     #  requests:
     #    memory: 256Mi
