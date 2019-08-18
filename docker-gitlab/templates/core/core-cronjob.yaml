@@ -77,8 +77,6 @@ spec:
                   key: DB_NAME
             - name: DB_ADAPTER
               value: postgresql
-            - name: TZ
-              value: {{ .Values.core.env.GITLAB_TIMEZONE | quote }}
             - name: GITLAB_DATA_DIR
               value: "/home/git/data"
             - name: GITLAB_BACKUP_SCHEDULE

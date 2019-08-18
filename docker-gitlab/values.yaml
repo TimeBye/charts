@@ -108,7 +108,8 @@ core:
   affinity: {}
   env:
     # DEBUG: true
-    GITLAB_TIMEZONE: Asia/Shanghai
+    TZ: Asia/Shanghai
+    GITLAB_TIMEZONE: Beijing
     # GITLAB_HOST: localhost
     # GITLAB_PORT: "80"
     # GITLAB_SSH_PORT: "22"
