@@ -150,4 +150,4 @@ The following table lists the configurable parameters of the Gitlab chart and th
 | `redis.external.port`                                      | The port of external Redis                                                                                                                                                                                                                                                    | `6379`                                    |
 
 [resources]: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
-[available options]: https://github.com/sameersbn/docker-gitlab#available-configuration-parameters/
+[available options]: https://github.com/sameersbn/docker-gitlab#available-configuration-parameters
