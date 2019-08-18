@@ -1,7 +1,7 @@
 {{- $core := .Values.persistence.persistentVolumeClaim.core -}}
 {{- $ingress := .Values.expose.ingress -}}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: "{{ include "gitlab.core" . }}"
   labels:
@@ -9,6 +9,7 @@ metadata:
     component: gitlab
 spec:
   replicas: {{ .Values.core.replicas }}
+  serviceName: {{ include "gitlab.core.serviceName" . }}
   selector:
     matchLabels:
 {{ include "gitlab.matchLabels" . | indent 6 }}

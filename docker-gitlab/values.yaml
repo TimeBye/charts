@@ -66,6 +66,10 @@ persistence:
     core:
       # Use the existing PVC which must be created manually before bound
       existingClaim: ""
+      # Specify the "storageClass" used to provision the volume. Or the default
+      # StorageClass will be used(the default).
+      # Set it to "-" to disable dynamic provisioning
+      storageClass: ""
       subPath: ""
       accessMode: ReadWriteMany
       size: 5Gi
@@ -73,9 +77,6 @@ persistence:
     # be ignored
     database:
       existingClaim: ""
-      # Specify the "storageClass" used to provision the volume. Or the default
-      # StorageClass will be used(the default).
-      # Set it to "-" to disable dynamic provisioning
       storageClass: ""
       subPath: ""
       accessMode: ReadWriteOnce
