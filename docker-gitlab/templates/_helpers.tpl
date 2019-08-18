@@ -87,11 +87,7 @@ app: "{{ include "gitlab.name" . }}"
 
 {{- define "gitlab.database.port" -}}
   {{- if eq .Values.database.type "internal" -}}
-    {{- if eq .Values.database.internal.adapter "postgresql" -}}
-      {{- printf "%s" "5432" -}}
-    {{- else -}}
-      {{- printf "%s" "3306" -}}
-    {{- end -}}
+    {{- printf "%s" "5432" -}}
   {{- else -}}
     {{- .Values.database.external.port -}}
   {{- end -}}

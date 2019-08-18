@@ -1,5 +1,4 @@
 {{- if eq .Values.database.type "internal" -}}
-{{- if eq .Values.database.internal.adapter "postgresql" -}}
 {{- $database := .Values.persistence.persistentVolumeClaim.database -}}
 apiVersion: apps/v1
 kind: StatefulSet
@@ -117,6 +116,5 @@ spec:
       resources:
         requests:
           storage: {{ $database.size | quote }}
-  {{- end -}}
   {{- end -}}
   {{- end -}}
