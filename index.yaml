@@ -2,10 +2,10 @@ apiVersion: v1
 entries:
   docker-gitlab:
   - appVersion: 12.1.6
-    created: "2019-08-18T16:35:53.140754397Z"
+    created: "2019-08-18T17:15:09.712669129Z"
     description: GitLab CE is set up in the Docker image using the install from source
       method as documented in the the official GitLab documentation.
-    digest: 09577864715ba09a47cdcfb1f2bc3fe78823dc19267c6a989ea34bc1ada288ff
+    digest: fd3f40599718340050dd1ad5744cac87b310321b87959b3b7c3f3dff2d286ff5
     home: https://about.gitlab.com
     icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
     keywords:
@@ -23,7 +23,7 @@ entries:
     - https://timebye.github.io/charts/docker-gitlab-0.2.0.tgz
     version: 0.2.0
   - appVersion: 12.0.4
-    created: "2019-08-18T16:35:53.139900853Z"
+    created: "2019-08-18T17:15:09.712057621Z"
     description: GitLab CE is set up in the Docker image using the install from source
       method as documented in the the official GitLab documentation.
     digest: 2e270e1db0c2356839fba7c7661c083893c7620b6a973cadfbead7ca2248b557
@@ -45,10 +45,10 @@ entries:
     version: 0.1.0
   harbor:
   - appVersion: 1.8.2
-    created: "2019-08-18T16:35:53.144814165Z"
+    created: "2019-08-18T17:15:09.716069562Z"
     description: An open source trusted cloud native registry that stores, signs,
       and scans content
-    digest: b5590e41116b4db6376f97623ece983c0d889b9a84392cd450acbe51ed99788c
+    digest: 8055b5618b6e6a4b82cafcc2b6a724d0e4fe393592250539c9b5c1678af6db16
     engine: gotpl
     home: https://goharbor.io
     icon: https://raw.githubusercontent.com/goharbor/harbor/master/docs/img/harbor_logo.png
@@ -69,7 +69,7 @@ entries:
     - https://timebye.github.io/charts/harbor-1.1.2.tgz
     version: 1.1.2
   - appVersion: 1.8.1
-    created: "2019-08-18T16:35:53.142660436Z"
+    created: "2019-08-18T17:15:09.71469522Z"
     description: An open source trusted cloud native registry that stores, signs,
       and scans content
     digest: 96b7433e9497f5ebe753d8508373c623b0ab0667d2610d33612250b90a6a701b
@@ -94,9 +94,9 @@ entries:
     version: 1.1.1
   oneindex:
   - appVersion: alpine-91b40ba6
-    created: "2019-08-18T16:35:53.146096082Z"
+    created: "2019-08-18T17:15:09.716437481Z"
     description: Onedrive Directory Index.
-    digest: c1521573c90f4467c9b9e20958bee9a7ba14a631464235d7516fb54299c41b14
+    digest: 802975c0c84ddf04536671ce1e868a8aac20107465901c542e1462fd37097d3d
     home: https://github.com/donwa/oneindex
     icon: https://i.loli.net/2019/08/07/7lKGzCAk2bTVuRL.png
     keywords:
@@ -116,10 +116,10 @@ entries:
   prometheus-operator:
   - apiVersion: v1
     appVersion: 0.31.1
-    created: "2019-08-18T16:35:53.157179454Z"
+    created: "2019-08-18T17:15:09.727728263Z"
     description: Provides easy monitoring definitions for Kubernetes services, and
       deployment and management of Prometheus instances.
-    digest: 043b6e30d0959e5ca48e6497343a21907c35e1d45f99db145e2499bed19d98c3
+    digest: 170f847176e5143732aa82dec3b745635a89183b3b5a2ea19c9a62bf408de2bb
     engine: gotpl
     home: https://github.com/coreos/prometheus-operator
     icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
@@ -138,4 +138,4 @@ entries:
     urls:
     - https://timebye.github.io/charts/prometheus-operator-6.7.1.tgz
     version: 6.7.1
-generated: "2019-08-18T16:35:53.138835176Z"
+generated: "2019-08-18T17:15:09.711283551Z"
