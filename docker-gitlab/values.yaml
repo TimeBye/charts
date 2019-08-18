@@ -45,6 +45,8 @@ expose:
   loadBalancer:
     # The name of LoadBalancer service
     # name: gitlab
+    # Set the IP if the LoadBalancer supports assigning IP
+    IP: ""
     ports:
       # The service port Gitlab listens on when serving with SSH
       ssh: 22
@@ -64,10 +66,6 @@ persistence:
     core:
       # Use the existing PVC which must be created manually before bound
       existingClaim: ""
-      # Specify the "storageClass" used to provision the volume. Or the default
-      # StorageClass will be used(the default).
-      # Set it to "-" to disable dynamic provisioning
-      storageClass: ""
       subPath: ""
       accessMode: ReadWriteMany
       size: 5Gi
@@ -75,6 +73,9 @@ persistence:
     # be ignored
     database:
       existingClaim: ""
+      # Specify the "storageClass" used to provision the volume. Or the default
+      # StorageClass will be used(the default).
+      # Set it to "-" to disable dynamic provisioning
       storageClass: ""
       subPath: ""
       accessMode: ReadWriteOnce
@@ -216,6 +217,7 @@ redis:
     image:
       repository: dockerhub.azk8s.cn/sameersbn/redis
       tag: 4.0.9-2
+    password: 
     ## Additional deployment annotations
     podAnnotations: {}
     # resources:
@@ -228,3 +230,4 @@ redis:
   external:
     host: "192.168.0.2"
     port: "6379"
+    password: 

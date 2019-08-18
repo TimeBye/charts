@@ -156,3 +156,27 @@ app: "{{ include "gitlab.name" . }}"
     {{- .Values.redis.external.port -}}
   {{- end -}}
 {{- end -}}
+
+{{- define "gitlab.redis.rawPassword" -}}
+  {{- if eq .Values.redis.type "internal" -}}
+    {{- if .Values.redis.internal.password }}
+      {{- .Values.redis.internal.password -}}
+    {{- else -}}
+      {{- printf "%s" "" -}}
+    {{- end -}}
+  {{- else -}}
+    {{- if .Values.redis.external.password }}
+      {{- .Values.redis.external.password -}}
+    {{- else -}}
+      {{- printf "%s" "" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- define "gitlab.redis.encryptedPassword" -}}
+  {{- if (include "gitlab.redis.rawPassword" .) }}
+    {{- include "gitlab.redis.rawPassword" . | b64enc | quote -}}
+  {{- else -}}
+    {{- printf "%s" "" -}}
+  {{- end -}}
+{{- end -}}

@@ -1,7 +1,7 @@
 {{- $core := .Values.persistence.persistentVolumeClaim.core -}}
 {{- $ingress := .Values.expose.ingress -}}
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: "{{ include "gitlab.core" . }}"
   labels:
@@ -9,7 +9,6 @@ metadata:
     component: gitlab
 spec:
   replicas: {{ .Values.core.replicas }}
-  serviceName: {{ include "gitlab.core.serviceName" . }}
   selector:
     matchLabels:
 {{ include "gitlab.matchLabels" . | indent 6 }}
@@ -35,6 +34,10 @@ spec:
           value: {{ $value | quote }}
       {{- end }}
       {{- end }}
+        - name: GITLAB_BACKUP_SCHEDULE
+          value: disable
+        - name: TZ
+          value: {{ .Values.core.env.GITLAB_TIMEZONE | quote }}
       {{- if eq .Values.expose.type "ingress" }}
         - name: GITLAB_HOST
           value: {{ $ingress.host }}
@@ -49,6 +52,13 @@ spec:
           value: {{ include "gitlab.redis.host" . | quote }}
         - name: REDIS_PORT
           value: {{ include "gitlab.redis.port" . | quote }}
+      {{- if (include "gitlab.redis.rawPassword" .) }}
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "gitlab.redis" . }}
+              key: REDIS_PASSWORD
+      {{- end }}
         - name: DB_ADAPTER
           value: {{ include "gitlab.database.adapter" . | quote }}
         - name: DB_HOST
@@ -70,10 +80,6 @@ spec:
             secretKeyRef:
               name: {{ include "gitlab.database" . }}
               key: DB_NAME
-        - name: TZ
-          value: {{ .Values.core.env.GITLAB_TIMEZONE | quote }}
-        - name: GITLAB_BACKUP_SCHEDULE
-          value: disable
         livenessProbe:
           httpGet:
             path: /help
