@@ -13,10 +13,11 @@ This [Gitlab](https://about.gitlab.com/) chart installs [sameersbn/gitlab](https
 
 ### Add chart repository
 
-Add Gitlab chart repository.
+Add chart repository and cache index.
 
 ```bash
 helm repo add setzero https://timebye.github.io/charts/
+helm repo update
 ```
 
 ### Configure the chart

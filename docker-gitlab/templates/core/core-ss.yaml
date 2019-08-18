@@ -36,6 +36,8 @@ spec:
       {{- end }}
       {{- end }}
         - name: GITLAB_BACKUP_SCHEDULE
+          value: "/home/git/data"
+        - name: GITLAB_DATA_DIR
           value: disable
         - name: TZ
           value: {{ .Values.core.env.GITLAB_TIMEZONE | quote }}
