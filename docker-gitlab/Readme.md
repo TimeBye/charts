@@ -44,7 +44,7 @@ Install the Gitlab helm chart with a release name `my-gitlab`:
 
 ```bash
 # helm v2
-helm setzero/docker-gitlab \
+helm install setzero/docker-gitlab \
   --name my-gitlab \
   --set expose.ingress.host=gitlab.cluster.local
 
