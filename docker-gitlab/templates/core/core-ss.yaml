@@ -35,12 +35,6 @@ spec:
           value: {{ $value | quote }}
       {{- end }}
       {{- end }}
-        - name: GITLAB_DATA_DIR
-          value: "/home/git/data"
-        - name: GITLAB_BACKUP_SCHEDULE
-          value: disable
-        - name: TZ
-          value: {{ .Values.core.env.GITLAB_TIMEZONE | quote }}
       {{- if eq .Values.expose.type "ingress" }}
         - name: GITLAB_HOST
           value: {{ $ingress.host }}
@@ -83,6 +77,12 @@ spec:
             secretKeyRef:
               name: {{ include "gitlab.database" . }}
               key: DB_NAME
+        - name: TZ
+          value: {{ .Values.core.env.GITLAB_TIMEZONE | quote }}
+        - name: GITLAB_DATA_DIR
+          value: "/home/git/data"
+        - name: GITLAB_BACKUP_SCHEDULE
+          value: disable
         livenessProbe:
           httpGet:
             path: /help
