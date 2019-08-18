@@ -77,14 +77,6 @@ app: "{{ include "gitlab.name" . }}"
   {{- printf "%s-ingress" (include "gitlab.fullname" .) -}}
 {{- end -}}
 
-{{- define "gitlab.database.adapter" -}}
-  {{- if eq .Values.database.type "internal" -}}
-    {{- .Values.database.internal.adapter -}}
-  {{- else -}}
-    {{- .Values.database.external.adapter -}}
-  {{- end -}}
-{{- end -}}
-
 {{- define "gitlab.database.host" -}}
   {{- if eq .Values.database.type "internal" -}}
     {{- include "gitlab.database" . }}

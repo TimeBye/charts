@@ -95,7 +95,7 @@ imagePullPolicy: IfNotPresent
 core:
   image:
     repository: quay.azk8s.cn/setzero/docker-gitlab
-    tag: v12.0.4
+    tag: v12.1.6
   replicas: 1
   ## Additional deployment annotations
   podAnnotations: {}
@@ -181,14 +181,10 @@ database:
   # and fill the connection informations in "external" section
   type: internal
   internal:
-    # You can configure this image to use either MySQL(mysql2) or PostgreSQL(postgresql).
+    # You can configure this image to use PostgreSQL.
     image:
       repository: dockerhub.azk8s.cn/sameersbn/postgresql
       tag: 10-2
-      # repository: dockerhub.azk8s.cn/sameersbn/mysql
-      # tag: 5.7.26-0
-    # If image is MySQL, set "adapter" to "mysql2".
-    adapter: "postgresql" 
     # The initial superuser password for internal database
     password: "changeit"
     ## Additional deployment annotations
@@ -202,8 +198,6 @@ database:
     affinity: {}
   external:
     # GitLab uses a database backend to store its data. 
-    # You can configure this image to use either MySQL(mysql2) or PostgreSQL(postgresql).
-    adapter: "postgresql" 
     host: "192.168.0.1"
     port: "5432"
     username: "user"

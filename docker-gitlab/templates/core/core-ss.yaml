@@ -56,8 +56,6 @@ spec:
               name: {{ include "gitlab.redis" . }}
               key: REDIS_PASSWORD
       {{- end }}
-        - name: DB_ADAPTER
-          value: {{ include "gitlab.database.adapter" . | quote }}
         - name: DB_HOST
           value: {{ include "gitlab.database.host" . | quote }}
         - name: DB_PORT
@@ -77,6 +75,8 @@ spec:
             secretKeyRef:
               name: {{ include "gitlab.database" . }}
               key: DB_NAME
+        - name: DB_ADAPTER
+          value: postgresql
         - name: TZ
           value: {{ .Values.core.env.GITLAB_TIMEZONE | quote }}
         - name: GITLAB_DATA_DIR
