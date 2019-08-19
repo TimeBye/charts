@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This [Gitlab](https://about.gitlab.com/) chart installs [sameersbn/gitlab](https://github.com/sameersbn/docker-gitlab) in a Kubernetes cluster.
+This [Gitlab](https://about.gitlab.com/) chart installs [setzero/docker-gitlab](https://github.com/setzero/docker-gitlab) in a Kubernetes cluster.
 
 ## Prerequisites
 
@@ -146,8 +146,10 @@ The following table lists the configurable parameters of the Gitlab chart and th
 | `redis.internal.nodeSelector`                              | Node labels for pod assignment                                                                                                                                                                                                                                                | `{}`                                      |
 | `redis.internal.tolerations`                               | Tolerations for pod assignment                                                                                                                                                                                                                                                | `[]`                                      |
 | `redis.internal.affinity`                                  | Node/Pod affinities                                                                                                                                                                                                                                                           | `{}`                                      |
+| `redis.internal.password`                                  | The password of internal Redis                                                                                                                                                                                                                                                | `{}`                                      |
 | `redis.external.host`                                      | The hostname of external Redis                                                                                                                                                                                                                                                | `192.168.0.2`                             |
 | `redis.external.port`                                      | The port of external Redis                                                                                                                                                                                                                                                    | `6379`                                    |
+| `redis.external.password`                                  | The password of external Redis                                                                                                                                                                                                                                                | `6379`                                    |
 
 [resources]: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
 [available options]: https://github.com/sameersbn/docker-gitlab#available-configuration-parameters
