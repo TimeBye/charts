@@ -11,5 +11,5 @@ sources:
 - https://github.com/sonatype/docker-nexus3
 - https://hub.docker.com/r/sonatype/nexus3
 maintainers:
-- name: 钟梓凌
-  email: ziling.zhong@hand-china.com
+- name: TimeBye
+  email: setzero@aliyun.com
