@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This [Gitlab](https://about.gitlab.com/) chart installs [setzero/docker-gitlab](https://github.com/setzero/docker-gitlab) in a Kubernetes cluster.
+This [Gitlab](https://about.gitlab.com/) chart installs [timebye/docker-gitlab](https://github.com/timebye/docker-gitlab) in a Kubernetes cluster.
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ This [Gitlab](https://about.gitlab.com/) chart installs [setzero/docker-gitlab](
 Add chart repository and cache index.
 
 ```bash
-helm repo add setzero https://timebye.github.io/charts/
+helm repo add timebye https://timebye.github.io/charts/
 helm repo update
 ```
 
@@ -44,12 +44,12 @@ Install the Gitlab helm chart with a release name `my-gitlab`:
 
 ```bash
 # helm v2
-helm install setzero/docker-gitlab \
+helm install timebye/docker-gitlab \
   --name my-gitlab \
   --set expose.ingress.host=gitlab.cluster.local
 
 # helm v3
-helm install my-gitlab setzero/docker-gitlab \
+helm install my-gitlab timebye/docker-gitlab \
   --set expose.ingress.host=gitlab.cluster.local
 ```
 
