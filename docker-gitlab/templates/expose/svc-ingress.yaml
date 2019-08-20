@@ -23,7 +23,7 @@ metadata:
   labels:
 {{ include "gitlab.labels" . | indent 4 }}
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - name: ssh
       port: 22
