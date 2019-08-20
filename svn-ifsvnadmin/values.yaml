@@ -9,10 +9,15 @@ image:
   repository: quay.azk8s.cn/setzero/svn-ifsvnadmin
   tag: passwd
   pullPolicy: IfNotPresent
+
 ## Additional deployment annotations
 annotations: {}
+
 ## Additional replica annotations
 podAnnotations: {}
+
+## Configure resource requests and limits
+## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 # resources: 
 #   limits:
 #     memory: 3Gi
@@ -20,10 +25,23 @@ podAnnotations: {}
 #   requests:
 #     memory: 3Gi
 #     # cpu: 100m
+
+## Node labels for pod assignment
+## Ref: https://kubernetes.io/docs/user-guide/node-selection/
 nodeSelector: {}
+
+## Tolerations for pod assignment
+## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 tolerations: []
+
+## Affinity for pod assignment
+## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
 affinity: {}
+
+## Extra environment variables to mount in the pods:
+## ref: https://github.com/TimeBye/svn-ifsvnadmin
 env: {}
+
 expose:
   # Set the way how to expose the service. Set the type as "ingress","clusterIP","loadBalancer"
   # or "nodePort" and fill the information in the corresponding 
@@ -61,6 +79,8 @@ expose:
   loadBalancer:
     # The name of LoadBalancer service
     # name: svn
+    # Set the IP if the LoadBalancer supports assigning IP
+    IP: ""
     # The service port svn listens on when serving with HTTP
     port: 80
 

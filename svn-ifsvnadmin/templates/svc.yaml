@@ -27,6 +27,9 @@ spec:
 {{- $loadBalancer := .Values.expose.loadBalancer }}
 spec:
   type: LoadBalancer
+  {{- if $loadBalancer.IP }}
+  loadBalancerIP: {{ $loadBalancer.IP }}
+  {{- end }}
   ports:
     - name: http
       port: {{ $loadBalancer.port }}
