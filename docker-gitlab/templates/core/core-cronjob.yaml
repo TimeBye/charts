@@ -29,12 +29,6 @@ spec:
             - gitlab:backup:create
             - RAILS_ENV=production SKIP=$(GITLAB_BACKUP_SKIP)
             env:
-          {{- range $name, $value := .Values.core.env }}
-          {{- if ne (len ($value | quote)) 0 }}
-            - name: {{ $name | quote }}
-              value: {{ $value | quote }}
-          {{- end }}
-          {{- end }}
           {{- if eq .Values.expose.type "ingress" }}
             {{ $ingress := .Values.expose.ingress -}}
             - name: GITLAB_HOST
@@ -85,6 +79,12 @@ spec:
                 secretKeyRef:
                   name: {{ include "gitlab.database" . }}
                   key: DB_NAME
+          {{- range $name, $value := .Values.core.env }}
+          {{- if ne (len ($value | quote)) 0 }}
+            - name: {{ $name | quote }}
+              value: {{ $value | quote }}
+          {{- end }}
+          {{- end }}
             - name: DB_ADAPTER
               value: postgresql
             - name: GITLAB_DATA_DIR
