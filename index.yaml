@@ -1,8 +1,27 @@
 apiVersion: v1
 entries:
   docker-gitlab:
+  - appVersion: v12.2.5
+    created: "2019-09-22T04:39:29.426434944Z"
+    description: GitLab CE is set up in the Docker image using the install from source
+      method as documented in the the official GitLab documentation.
+    digest: 147728b372d89bdb0a2665601bbae788c5d12862e9b38f6ea072e670f47bbeca
+    home: https://about.gitlab.com
+    icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+    keywords:
+    - gitlab
+    maintainers:
+    - email: setzero@aliyun.com
+      name: TimeBye
+    name: docker-gitlab
+    sources:
+    - https://about.gitlab.com
+    - https://github.com/TimeBye/docker-gitlab
+    urls:
+    - https://timebye.github.io/charts/docker-gitlab-0.2.1.tgz
+    version: 0.2.1
   - appVersion: v12.1.6
-    created: "2019-09-03T02:39:14.521341393Z"
+    created: "2019-09-22T04:39:29.42526319Z"
     description: GitLab CE is set up in the Docker image using the install from source
       method as documented in the the official GitLab documentation.
     digest: 5fcca35593a8f163081c206b27a9a9b47e7a7c5e8946c834315b40e45b6616f8
@@ -21,7 +40,7 @@ entries:
     - https://timebye.github.io/charts/docker-gitlab-0.2.0.tgz
     version: 0.2.0
   - appVersion: 12.0.4
-    created: "2019-09-03T02:39:14.520738817Z"
+    created: "2019-09-22T04:39:29.424650003Z"
     description: GitLab CE is set up in the Docker image using the install from source
       method as documented in the the official GitLab documentation.
     digest: 8f481587de027788d64b74bd42e8b74f6e8f50e76a3df375076fded56b5b165d
@@ -43,10 +62,10 @@ entries:
     version: 0.1.0
   harbor:
   - appVersion: 1.8.2
-    created: "2019-09-03T02:39:14.524638626Z"
+    created: "2019-09-22T04:39:29.429245Z"
     description: An open source trusted cloud native registry that stores, signs,
       and scans content
-    digest: 6ae0194ad34b1e903d83a1000bc0919914208d5b5f24e08cf5c39b86b0658ed4
+    digest: 81393ffc85c2da38de3e47d10f8e1e4ddfb93c34783d7571b1f3687089cb8fe0
     engine: gotpl
     home: https://goharbor.io
     icon: https://raw.githubusercontent.com/goharbor/harbor/master/docs/img/harbor_logo.png
@@ -67,7 +86,7 @@ entries:
     - https://timebye.github.io/charts/harbor-1.1.2.tgz
     version: 1.1.2
   - appVersion: 1.8.1
-    created: "2019-09-03T02:39:14.52319838Z"
+    created: "2019-09-22T04:39:29.427794919Z"
     description: An open source trusted cloud native registry that stores, signs,
       and scans content
     digest: 96b7433e9497f5ebe753d8508373c623b0ab0667d2610d33612250b90a6a701b
@@ -92,9 +111,9 @@ entries:
     version: 1.1.1
   nexus3:
   - appVersion: 3.18.1
-    created: "2019-09-03T02:39:14.525030623Z"
+    created: "2019-09-22T04:39:29.429667273Z"
     description: Sonatype Nexus Repository Manager 3
-    digest: fc39359c2129e52cb348e38a91a8368875c0da067119d0a149584e7465ae0dd8
+    digest: 77403c10e417fe50233542244630283319f2d80a3bff2b2a8fc97ed019c03711
     home: https://github.com/sonatype/docker-nexus3
     icon: https://secure.gravatar.com/avatar/614e0f6491dbb293e540190b02b3024e.jpg
     keywords:
@@ -112,9 +131,9 @@ entries:
     version: 0.1.0
   oneindex:
   - appVersion: alpine-91b40ba6
-    created: "2019-09-03T02:39:14.525477516Z"
+    created: "2019-09-22T04:39:29.430077847Z"
     description: Onedrive Directory Index.
-    digest: d64dfa7ce69a5ee96c51d9cffb3860d7b303e0132184f4dfa4d469032f5de562
+    digest: 8329b28456bbf115b6290a7e63bdfc866bd09e22d8c60f7c40c3fbf4f283c784
     home: https://github.com/donwa/oneindex
     icon: https://i.loli.net/2019/08/07/7lKGzCAk2bTVuRL.png
     keywords:
@@ -134,10 +153,10 @@ entries:
   prometheus-operator:
   - apiVersion: v1
     appVersion: 0.31.1
-    created: "2019-09-03T02:39:14.538467004Z"
+    created: "2019-09-22T04:39:29.440864965Z"
     description: Provides easy monitoring definitions for Kubernetes services, and
       deployment and management of Prometheus instances.
-    digest: b9865cfc319f0171f8b08a6edddbace0e9966b878bc2ef272e96866eaef205c9
+    digest: 413a1fff29e935be9d2b2edd6c6f2aa3087b30a30ca2b0d2b178e7416f4f4cf3
     engine: gotpl
     home: https://github.com/coreos/prometheus-operator
     icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
@@ -158,10 +177,10 @@ entries:
     version: 6.7.1
   svn-ifsvnadmin:
   - appVersion: passwd
-    created: "2019-09-03T02:39:14.539065841Z"
+    created: "2019-09-22T04:39:29.441305265Z"
     description: iF.SVNAdmin. It's a web interface for subversion repositories and
       users management.
-    digest: 56dbb45cb073ead033a9641d6759db3c69697f6393e00dbbed7ff1fdc3d75df0
+    digest: a274f4d7c98dad72d351255cfde486a8aa15bc02083e67be00ec99253cc389bb
     home: http://svnadmin.insanefactory.com/
     icon: http://tortoisesvn.net/assets/img/logo-256x256.png
     keywords:
@@ -177,4 +196,4 @@ entries:
     urls:
     - https://timebye.github.io/charts/svn-ifsvnadmin-0.1.0.tgz
     version: 0.1.0
-generated: "2019-09-03T02:39:14.519908278Z"
+generated: "2019-09-22T04:39:29.423873794Z"
