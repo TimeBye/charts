@@ -115,10 +115,26 @@ spec:
           nodeSelector:
     {{ toYaml . | indent 8 }}
         {{- end }}
-        {{- with .Values.core.affinity }}
           affinity:
-    {{ toYaml . | indent 8 }}
-        {{- end }}
+          {{- if eq .Values.core.affinity "hard" }}
+            podAntiAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                - topologyKey: "kubernetes.io/hostname"
+                  labelSelector:
+                    matchLabels:
+{{ include "gitlab.matchLabels" . | indent 22 }}
+                      component: gitlab
+          {{- else if eq .Values.core.affinity "soft" }}
+            podAntiAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 1
+                podAffinityTerm:
+                  topologyKey: kubernetes.io/hostname
+                  labelSelector:
+                    matchLabels:
+{{ include "gitlab.matchLabels" . | indent 22 }}
+                      component: gitlab
+      {{- end }}
         {{- with .Values.core.tolerations }}
           tolerations:
     {{ toYaml . | indent 8 }}

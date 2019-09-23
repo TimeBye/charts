@@ -107,7 +107,7 @@ core:
   #    cpu: 100m
   nodeSelector: {}
   tolerations: []
-  affinity: {}
+  affinity: soft
   env:
     # DEBUG: true
     TZ: Asia/Shanghai
