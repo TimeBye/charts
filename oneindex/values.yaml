@@ -7,7 +7,7 @@ strategy:
 
 image:
   repository: dockerhub.azk8s.cn/setzero/oneindex
-  tag: alpine-91b40ba6
+  tag: alpine-e0ec3a69
   pullPolicy: IfNotPresent
 ## Additional deployment annotations
 annotations: {}
