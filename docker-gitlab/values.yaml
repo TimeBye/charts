@@ -97,7 +97,7 @@ imagePullPolicy: IfNotPresent
 core:
   image:
     repository: quay.azk8s.cn/setzero/docker-gitlab
-    tag: v12.3.2
+    tag: v12.3.5
   replicas: 1
   ## Additional deployment annotations
   podAnnotations: {}
