@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "hackmd.fullname" . }}
+  name: {{ include "hackmd.core.serviceName" . }}
   labels:
 {{ include "hackmd.labels" . | indent 4 }}
 {{- if or (eq .Values.expose.type "clusterIP") (eq .Values.expose.type "ingress") }}
