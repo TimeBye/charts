@@ -1,0 +1,14 @@
+name: hackmd
+version: 0.1.0
+appVersion: 1.4.1
+description: CodiMD lets you collaborate in real-time with markdown. Built on HackMD source code, CodiMD lets you host and control your team's content with speed and ease.
+keywords:
+- hackmd
+home: https://hackmd.io/home
+icon: https://pbs.twimg.com/profile_images/642911914872320002/7bOnK9WS_400x400.png
+sources:
+- https://hackmd.io/home
+- https://github.com/hackmdio/codimd
+maintainers:
+- name: TimeBye
+  email: setzero@aliyun.com
