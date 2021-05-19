@@ -1,11 +1,11 @@
 apiVersion: v1
 entries:
   docker-gitlab:
-  - appVersion: v12.3.5
-    created: "2020-01-19T09:54:42.71807767Z"
-    description: GitLab CE is set up in the Docker image using the install from source
-      method as documented in the the official GitLab documentation.
-    digest: d94b8902c0cdb6098fea7fc3289ec94589fed0eac5997798c7eab7fe56664426
+  - apiVersion: v1
+    appVersion: v12.3.5
+    created: "2021-05-19T07:51:50.129240814Z"
+    description: GitLab CE is set up in the Docker image using the install from source method as documented in the the official GitLab documentation.
+    digest: 097f5460c965252efa0f0ec1eff7419aec67900275e6aa07cb39c484afa47295
     home: https://about.gitlab.com
     icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
     keywords:
@@ -20,10 +20,10 @@ entries:
     urls:
     - https://timebye.github.io/charts/docker-gitlab-0.2.3.tgz
     version: 0.2.3
-  - appVersion: v12.3.2
-    created: "2020-01-19T09:54:42.717317486Z"
-    description: GitLab CE is set up in the Docker image using the install from source
-      method as documented in the the official GitLab documentation.
+  - apiVersion: v1
+    appVersion: v12.3.2
+    created: "2021-05-19T07:51:50.128044Z"
+    description: GitLab CE is set up in the Docker image using the install from source method as documented in the the official GitLab documentation.
     digest: 604848b2eef84fb9be5dfb845b2e5ca05a8a97d3ab90db64c91693a3e1bd1207
     home: https://about.gitlab.com
     icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
@@ -39,10 +39,10 @@ entries:
     urls:
     - https://timebye.github.io/charts/docker-gitlab-0.2.2.tgz
     version: 0.2.2
-  - appVersion: v12.2.5
-    created: "2020-01-19T09:54:42.716536081Z"
-    description: GitLab CE is set up in the Docker image using the install from source
-      method as documented in the the official GitLab documentation.
+  - apiVersion: v1
+    appVersion: v12.2.5
+    created: "2021-05-19T07:51:50.126757084Z"
+    description: GitLab CE is set up in the Docker image using the install from source method as documented in the the official GitLab documentation.
     digest: d9d8fc0d55908061b837656793b54c6eca256bbe4637b24a2cc3844f215b7ed0
     home: https://about.gitlab.com
     icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
@@ -58,10 +58,10 @@ entries:
     urls:
     - https://timebye.github.io/charts/docker-gitlab-0.2.1.tgz
     version: 0.2.1
-  - appVersion: v12.1.6
-    created: "2020-01-19T09:54:42.715007719Z"
-    description: GitLab CE is set up in the Docker image using the install from source
-      method as documented in the the official GitLab documentation.
+  - apiVersion: v1
+    appVersion: v12.1.6
+    created: "2021-05-19T07:51:50.125445368Z"
+    description: GitLab CE is set up in the Docker image using the install from source method as documented in the the official GitLab documentation.
     digest: 5fcca35593a8f163081c206b27a9a9b47e7a7c5e8946c834315b40e45b6616f8
     home: https://about.gitlab.com
     icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
@@ -77,10 +77,10 @@ entries:
     urls:
     - https://timebye.github.io/charts/docker-gitlab-0.2.0.tgz
     version: 0.2.0
-  - appVersion: 12.0.4
-    created: "2020-01-19T09:54:42.713914428Z"
-    description: GitLab CE is set up in the Docker image using the install from source
-      method as documented in the the official GitLab documentation.
+  - apiVersion: v1
+    appVersion: 12.0.4
+    created: "2021-05-19T07:51:50.12400825Z"
+    description: GitLab CE is set up in the Docker image using the install from source method as documented in the the official GitLab documentation.
     digest: 8f481587de027788d64b74bd42e8b74f6e8f50e76a3df375076fded56b5b165d
     home: https://about.gitlab.com
     icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
@@ -99,12 +99,11 @@ entries:
     - https://timebye.github.io/charts/docker-gitlab-0.1.0.tgz
     version: 0.1.0
   hackmd:
-  - appVersion: 1.4.1
-    created: "2020-01-19T09:54:42.718687536Z"
-    description: CodiMD lets you collaborate in real-time with markdown. Built on
-      HackMD source code, CodiMD lets you host and control your team's content with
-      speed and ease.
-    digest: 02eb10dc77179d0b2010b01ab66135b6bbc86be680a46c04dfb99a25ca56fc49
+  - apiVersion: v1
+    appVersion: 1.4.1
+    created: "2021-05-19T07:51:50.130071324Z"
+    description: CodiMD lets you collaborate in real-time with markdown. Built on HackMD source code, CodiMD lets you host and control your team's content with speed and ease.
+    digest: 3f6b738e335dabb7179f9ca2c3f64245d17ad6f2f04d4d195eea629b7e10b3dd
     home: https://hackmd.io/home
     icon: https://pbs.twimg.com/profile_images/642911914872320002/7bOnK9WS_400x400.png
     keywords:
@@ -120,12 +119,11 @@ entries:
     - https://timebye.github.io/charts/hackmd-0.1.0.tgz
     version: 0.1.0
   harbor:
-  - appVersion: 1.8.2
-    created: "2020-01-19T09:54:42.722683825Z"
-    description: An open source trusted cloud native registry that stores, signs,
-      and scans content
-    digest: e1b461182aee0f3a67d57fef7102b6cf280abbe47fb69f7e53ecb41f4187d390
-    engine: gotpl
+  - apiVersion: v1
+    appVersion: 1.8.2
+    created: "2021-05-19T07:51:50.146356123Z"
+    description: An open source trusted cloud native registry that stores, signs, and scans content
+    digest: 1a00e0238f9d3b265f2db0e7fa614f7dea54b3078cbb0eff3753a509cc6ec999
     home: https://goharbor.io
     icon: https://raw.githubusercontent.com/goharbor/harbor/master/docs/img/harbor_logo.png
     keywords:
@@ -144,12 +142,11 @@ entries:
     urls:
     - https://timebye.github.io/charts/harbor-1.1.2.tgz
     version: 1.1.2
-  - appVersion: 1.8.1
-    created: "2020-01-19T09:54:42.720735814Z"
-    description: An open source trusted cloud native registry that stores, signs,
-      and scans content
+  - apiVersion: v1
+    appVersion: 1.8.1
+    created: "2021-05-19T07:51:50.143798992Z"
+    description: An open source trusted cloud native registry that stores, signs, and scans content
     digest: 96b7433e9497f5ebe753d8508373c623b0ab0667d2610d33612250b90a6a701b
-    engine: gotpl
     home: https://goharbor.io
     icon: https://raw.githubusercontent.com/goharbor/harbor/master/docs/img/harbor_logo.png
     keywords:
@@ -169,10 +166,11 @@ entries:
     - https://timebye.github.io/charts/harbor-1.1.1.tgz
     version: 1.1.1
   nexus3:
-  - appVersion: 3.18.1
-    created: "2020-01-19T09:54:42.723531551Z"
+  - apiVersion: v1
+    appVersion: 3.18.1
+    created: "2021-05-19T07:51:50.147077932Z"
     description: Sonatype Nexus Repository Manager 3
-    digest: 2258e699e1049972f20265c0b60545aa9b4b0867f3a47b03d2c5c2a571171443
+    digest: 738bc17c0ab8af9ccbcd8c25c856b11ffd172c5466410989763d1b9106549d3e
     home: https://github.com/sonatype/docker-nexus3
     icon: https://secure.gravatar.com/avatar/614e0f6491dbb293e540190b02b3024e.jpg
     keywords:
@@ -189,10 +187,11 @@ entries:
     - https://timebye.github.io/charts/nexus3-0.1.0.tgz
     version: 0.1.0
   oneindex:
-  - appVersion: alpine-e0ec3a69
-    created: "2020-01-19T09:54:42.724277881Z"
+  - apiVersion: v1
+    appVersion: alpine-e0ec3a69
+    created: "2021-05-19T07:51:50.14773764Z"
     description: Onedrive Directory Index.
-    digest: f295f1282dbc553db0925734c729b0df5cd44618640c088ba3c7235bd1e10a47
+    digest: 4d28ecf96bb6bed50e7b8233f5fe91f749c94c0f36a2ed9ec4cba3989349fc1c
     home: https://github.com/donwa/oneindex
     icon: https://i.loli.net/2019/08/07/7lKGzCAk2bTVuRL.png
     keywords:
@@ -212,11 +211,22 @@ entries:
   prometheus-operator:
   - apiVersion: v1
     appVersion: 0.31.1
-    created: "2020-01-19T09:54:42.735217605Z"
-    description: Provides easy monitoring definitions for Kubernetes services, and
-      deployment and management of Prometheus instances.
+    created: "2021-05-19T07:51:50.163809236Z"
+    dependencies:
+    - condition: kubeStateMetrics.enabled
+      name: kube-state-metrics
+      repository: https://kubernetes-charts.storage.googleapis.com/
+      version: 2.0.*
+    - condition: nodeExporter.enabled
+      name: prometheus-node-exporter
+      repository: https://kubernetes-charts.storage.googleapis.com/
+      version: 1.5.*
+    - condition: grafana.enabled
+      name: grafana
+      repository: https://kubernetes-charts.storage.googleapis.com/
+      version: 3.8.*
+    description: Provides easy monitoring definitions for Kubernetes services, and deployment and management of Prometheus instances.
     digest: 78f0cfe87b39f923f91d5af9302cd70364006b5991eb6fd1bcf97bde5327b5ad
-    engine: gotpl
     home: https://github.com/coreos/prometheus-operator
     icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
     keywords:
@@ -235,11 +245,11 @@ entries:
     - https://timebye.github.io/charts/prometheus-operator-6.7.1.tgz
     version: 6.7.1
   svn-ifsvnadmin:
-  - appVersion: passwd
-    created: "2020-01-19T09:54:42.736002227Z"
-    description: iF.SVNAdmin. It's a web interface for subversion repositories and
-      users management.
-    digest: cd0be74b35ef0c526ea96f87eb08f80eca771fde01addebd2c3709c8413f13c7
+  - apiVersion: v1
+    appVersion: passwd
+    created: "2021-05-19T07:51:50.164464144Z"
+    description: iF.SVNAdmin. It's a web interface for subversion repositories and users management.
+    digest: c7be455078f573306631f8c40b0c13f970547b7bf57c77954de3bb57ff0b4ae5
     home: http://svnadmin.insanefactory.com/
     icon: http://tortoisesvn.net/assets/img/logo-256x256.png
     keywords:
@@ -255,4 +265,4 @@ entries:
     urls:
     - https://timebye.github.io/charts/svn-ifsvnadmin-0.1.0.tgz
     version: 0.1.0
-generated: "2020-01-19T09:54:42.712504116Z"
+generated: "2021-05-19T07:51:50.120798711Z"
