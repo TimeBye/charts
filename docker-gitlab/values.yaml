@@ -74,7 +74,7 @@ persistence:
       storageClass: ""
       subPath: ""
       accessMode: ReadWriteMany
-      size: 5Gi
+      size: 20Gi
     # If external database is used, the following settings for database will 
     # be ignored
     database:
@@ -82,7 +82,7 @@ persistence:
       storageClass: ""
       subPath: ""
       accessMode: ReadWriteOnce
-      size: 1Gi
+      size: 5Gi
     # If external Redis is used, the following settings for Redis will 
     # be ignored
     redis:
@@ -96,7 +96,7 @@ imagePullPolicy: IfNotPresent
 
 core:
   image:
-    repository: quay.azk8s.cn/setzero/docker-gitlab
+    repository: quay.io/setzero/docker-gitlab
     tag: v12.3.5
   replicas: 1
   ## Additional deployment annotations
@@ -126,60 +126,62 @@ core:
 
     GITLAB_NOTIFY_ON_BROKEN_BUILDS: true
     GITLAB_NOTIFY_PUSHER: false
-
-    GITLAB_EMAIL: notifications@example.com
-    GITLAB_EMAIL_REPLY_TO: noreply@example.com
-    GITLAB_INCOMING_EMAIL_ADDRESS: reply@example.com
     
     GITLAB_BACKUP_SCHEDULE: daily
     GITLAB_BACKUP_TIME: 01:00
+    GITLAB_BACKUP_EXPIRY: 604800
+    # GITLAB_BACKUP_SKIP: 
+
+    # GITLAB_EMAIL: notifications@example.com
+    # GITLAB_EMAIL_REPLY_TO: noreply@example.com
+    # GITLAB_INCOMING_EMAIL_ADDRESS: reply@example.com
 
     SMTP_ENABLED: false
-    SMTP_DOMAIN: www.example.com
-    SMTP_HOST: smtp.gmail.com
-    SMTP_PORT: 587
-    SMTP_USER: mailer@example.com
-    SMTP_PASS: password
-    SMTP_STARTTLS: true
-    SMTP_AUTHENTICATION: login
+    # SMTP_DOMAIN: www.example.com
+    # SMTP_HOST: smtp.gmail.com
+    # SMTP_PORT: 587
+    # SMTP_USER: mailer@example.com
+    # SMTP_PASS: password
+    # SMTP_STARTTLS: true
+    # SMTP_AUTHENTICATION: login
 
     IMAP_ENABLED: false
-    IMAP_HOST: imap.gmail.com
-    IMAP_PORT: 993
-    IMAP_USER: mailer@example.com
-    IMAP_PASS: password
-    IMAP_SSL: true
-    IMAP_STARTTLS: false
+    # IMAP_HOST: imap.gmail.com
+    # IMAP_PORT: 993
+    # IMAP_USER: mailer@example.com
+    # IMAP_PASS: password
+    # IMAP_SSL: true
+    # IMAP_STARTTLS: false
 
     OAUTH_ENABLED: false
-    OAUTH_AUTO_SIGN_IN_WITH_PROVIDER: 
-    OAUTH_ALLOW_SSO: 
-    OAUTH_BLOCK_AUTO_CREATED_USERS: true
-    OAUTH_AUTO_LINK_LDAP_USER: false
-    OAUTH_AUTO_LINK_SAML_USER: false
-    OAUTH_EXTERNAL_PROVIDERS: 
+    # OAUTH_AUTO_SIGN_IN_WITH_PROVIDER: 
+    # OAUTH_ALLOW_SSO: 
+    # OAUTH_BLOCK_AUTO_CREATED_USERS: true
+    # OAUTH_AUTO_LINK_LDAP_USER: false
+    # OAUTH_AUTO_LINK_SAML_USER: false
+    # OAUTH_EXTERNAL_PROVIDERS: 
 
-    OAUTH_GENERIC_API_KEY:
-    OAUTH_GENERIC_APP_SECRET:
-    OAUTH_GENERIC_APP_NAME:
-    OAUTH_GENERIC_STRATEGY_CLASS:
-    OAUTH_GENERIC_SITE:
-    OAUTH_GENERIC_USER_INFO_URL:
-    OAUTH_GENERIC_AUTHORIZE_URL:
-    OAUTH_GENERIC_TOKEN_URL:
-    OAUTH_GENERIC_ROOT_PATH:
-    OAUTH_GENERIC_ID_PATH:
-    OAUTH_GENERIC_USER_NAME:
-    OAUTH_GENERIC_USER_EMAIL:
-    OAUTH_GENERIC_USER_NICKNAME:
-    OAUTH_GENERIC_USER_FIRST_NAME:
-    OAUTH_GENERIC_USER_LAST_NAME:
-    OAUTH_GENERIC_USER_LOCATION:
-    OAUTH_GENERIC_USER_DESC:
-    OAUTH_GENERIC_USER_IMAGE:
-    OAUTH_GENERIC_USER_PHONE:
-    OAUTH_GENERIC_USER_URLS:
-    OAUTH_GENERIC_REDIRECT_URL:
+    # OAUTH_GENERIC_API_KEY:
+    # OAUTH_GENERIC_APP_SECRET:
+    # OAUTH_GENERIC_APP_NAME:
+    # OAUTH_GENERIC_STRATEGY_CLASS:
+    # OAUTH_GENERIC_SITE:
+    # OAUTH_GENERIC_USER_INFO_URL:
+    # OAUTH_GENERIC_AUTHORIZE_URL:
+    # OAUTH_GENERIC_TOKEN_URL:
+    # OAUTH_GENERIC_ROOT_PATH:
+    # OAUTH_GENERIC_ID_PATH:
+    # OAUTH_GENERIC_USER_NAME:
+    # OAUTH_GENERIC_USER_EMAIL:
+    # OAUTH_GENERIC_USER_NICKNAME:
+    # OAUTH_GENERIC_USER_FIRST_NAME:
+    # OAUTH_GENERIC_USER_LAST_NAME:
+    # OAUTH_GENERIC_USER_LOCATION:
+    # OAUTH_GENERIC_USER_DESC:
+    # OAUTH_GENERIC_USER_IMAGE:
+    # OAUTH_GENERIC_USER_PHONE:
+    # OAUTH_GENERIC_USER_URLS:
+    # OAUTH_GENERIC_REDIRECT_URL:
 
 database:
   # if external database is used, set "type" to "external"
@@ -188,7 +190,7 @@ database:
   internal:
     # You can configure this image to use PostgreSQL.
     image:
-      repository: dockerhub.azk8s.cn/sameersbn/postgresql
+      repository: sameersbn/postgresql
       tag: 10-2
     # The initial superuser password for internal database
     password: "changeit"
@@ -215,7 +217,7 @@ redis:
   type: internal
   internal:
     image:
-      repository: dockerhub.azk8s.cn/sameersbn/redis
+      repository: sameersbn/redis
       tag: 4.0.9-2
     password: 
     ## Additional deployment annotations

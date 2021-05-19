@@ -29,24 +29,9 @@ spec:
       - name: database
         image: "{{ .Values.database.internal.image.repository }}:{{ .Values.database.internal.image.tag }}"
         imagePullPolicy: {{ .Values.imagePullPolicy }}
-        env:
-        - name: DB_EXTENSION
-          value: pg_trgm
-        - name: DB_USER
-          valueFrom:
-            secretKeyRef:
-              name: {{ include "gitlab.database" . }}
-              key: DB_USER
-        - name: DB_PASS
-          valueFrom:
-            secretKeyRef:
-              name: {{ include "gitlab.database" . }}
-              key: DB_PASS
-        - name: DB_NAME
-          valueFrom:
-            secretKeyRef:
-              name: {{ include "gitlab.database" . }}
-              key: DB_NAME
+        envFrom:
+        - secretRef:
+            name: {{ include "gitlab.database" . }}
         ports:
         - name: postgres
           containerPort: 5432

@@ -1,0 +1,39 @@
+name: build
+on: 
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+    - name: Clone git repo
+      run: |
+        git config --global user.email "setzero@aliyun.com"
+        git config --global user.name "${{ github.repository_owner }}"
+        git clone -b gh-pages https://github.com/${{ github.repository }}.git ${RUNNER_TEMP}/charts
+    - name: Build charts
+      run: |
+        for chart in $(ls -d */)
+        do
+          cd $chart
+          helm dependency update
+          cd ..
+          helm package $chart
+        done
+        mv *.tgz ${RUNNER_TEMP}/charts
+    - name: Push charts
+      run : |
+        cd ${RUNNER_TEMP}/charts
+        rm -rf .circleci
+        helm repo index . --url https://timebye.github.io/charts/
+        git add .
+        git commit -m ${{ github.sha }}
+        git push https://${{ github.repository_owner }}:${{ secrets.password }}@github.com/${{ github.repository }}.git
+    - name: Delete workflow runs
+      uses: GitRML/delete-workflow-runs@main
+      with:
+        retain_days: 7
+        keep_minimum_runs: 3

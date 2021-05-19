@@ -102,7 +102,7 @@ app: "{{ include "gitlab.name" . }}"
 {{- end -}}
 
 {{- define "gitlab.database.encryptedUsername" -}}
-  {{- include "gitlab.database.rawUsername" . | b64enc | quote -}}
+  {{- include "gitlab.database.rawUsername" . | quote -}}
 {{- end -}}
 
 {{- define "gitlab.database.rawPassword" -}}
@@ -114,7 +114,7 @@ app: "{{ include "gitlab.name" . }}"
 {{- end -}}
 
 {{- define "gitlab.database.encryptedPassword" -}}
-  {{- include "gitlab.database.rawPassword" . | b64enc | quote -}}
+  {{- include "gitlab.database.rawPassword" . | quote -}}
 {{- end -}}
 
 {{- define "gitlab.database.rawDatabaseName" -}}
@@ -126,7 +126,7 @@ app: "{{ include "gitlab.name" . }}"
 {{- end -}}
 
 {{- define "gitlab.database.encryptedDatabaseName" -}}
-  {{- include "gitlab.database.rawDatabaseName" . | b64enc | quote -}}
+  {{- include "gitlab.database.rawDatabaseName" . | quote -}}
 {{- end -}}
 
 {{- define "gitlab.redis.host" -}}
@@ -163,7 +163,7 @@ app: "{{ include "gitlab.name" . }}"
 
 {{- define "gitlab.redis.encryptedPassword" -}}
   {{- if (include "gitlab.redis.rawPassword" .) }}
-    {{- include "gitlab.redis.rawPassword" . | b64enc | quote -}}
+    {{- include "gitlab.redis.rawPassword" . | quote -}}
   {{- else -}}
     {{- printf "%s" "" -}}
   {{- end -}}
